@@ -1,0 +1,12 @@
+[package]
+name = "axum-web-gcp"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = { version = "0.7.5", features = ["tokio", "http1"] }
+tokio = { version = "1.39.2", features = ["full"] }
+tracing-subscriber = {  version = "0.3.18", features = ["fmt", "json"] }
+hyper = "1.4.1"
+serde_json = "1.0.122"
+chrono = { version = "0.4.38", features = ["serde"] }
