@@ -11,12 +11,17 @@ RUN apt-get update -y \
 # Copy the source code into the container
 COPY . .
 
+# Set build arguments for the runtime environment
+ARG GCP_PROJECT_ID
+
 # Set environment variables for the build
 ENV SQLX_OFFLINE=true
 ENV APP_ENVIRONMENT=production
+ENV GCP_PROJECT_ID=${GCP_PROJECT_ID}
 
 # Build the application
 RUN cargo build --release
+
 
 # Use a minimal base image for the runtime environment
 FROM gcr.io/distroless/cc-debian12 AS runtime
@@ -29,6 +34,7 @@ COPY --from=builder /app/target/release/axum-web-gcp axum-web-gcp
 
 # Set environment variables for the runtime
 ENV APP_ENVIRONMENT=production
+ENV GCP_PROJECT_ID=${GCP_PROJECT_ID}
 
 # Expose the port that the application listens on
 EXPOSE 8080
