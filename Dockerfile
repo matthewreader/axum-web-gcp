@@ -30,6 +30,8 @@ COPY --from=builder /app/target/release/axum-web-gcp axum-web-gcp
 # Set environment variables for the runtime
 ENV APP_ENVIRONMENT=production
 
+# Expose the port that the application listens on
+EXPOSE 8080
 
 # Run the application
 ENTRYPOINT ["./axum-web-gcp"]
