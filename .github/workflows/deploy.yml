@@ -34,7 +34,7 @@ jobs:
 
       - name: Set up Firestore Service Account
         run: |
-          printf "%s" "${{ secrets.FIRESTORE_SA }}" > $GITHUB_WORKSPACE/firestore-sa.json
+          printf "%s" "${{ secrets.FIRESTORE_SA }}" > firestore-sa.json
 
       - name: Deploy to Cloud Run
         run: |
