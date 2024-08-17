@@ -44,3 +44,4 @@ jobs:
             --platform managed \
             --allow-unauthenticated
             --service-account ${{ secrets.FIRESTORE_SERVICE_ACCOUNT }}
+            --set-env-vars GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }}
