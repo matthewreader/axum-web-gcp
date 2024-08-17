@@ -34,9 +34,7 @@ jobs:
 
       - name: Set up Firestore Service Account
         run: |
-          echo ${{ secrets.FIRESTORE_SERVICE_ACCOUNT }} > /tmp/firestore-sa.json
-          gcloud auth activate-service-account --key-file=/tmp/firestore-sa.json
-          gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
+          printf "%s" "${{ secrets.FIRESTORE_SA }}" > $GITHUB_WORKSPACE/firestore-sa.json
 
       - name: Deploy to Cloud Run
         run: |
